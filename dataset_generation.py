@@ -107,7 +107,7 @@ def run_generation(config: GenConfig, annotations_path: str, images_path: str):
                     "category_id": rect[5],
                 } for rect in rects])
 
-            cv2.imwrite(os.path.join(images_path, image_file_name), image)
+            cv2.imwrite(os.path.join(images_path, image_file_name), cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
             sequentially_number += 1
 
     with open(os.path.join(annotations_path, 'train_annotations.json'), 'w') as outfile:
